@@ -37,7 +37,7 @@ export type MediaPickerRef = {
 };
 
 interface MediaPickerProps {
-  value?: Media[];
+  value: Media[];
   options?: ImagePickerOptions;
   children?: ((value: Media[] | null) => React.ReactNode) | React.ReactNode;
   onError?: (error: Error | PlayerError) => void;

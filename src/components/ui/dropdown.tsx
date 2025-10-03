@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   FlatList,
   Modal,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -27,10 +28,24 @@ export function Dropdown({
   placeholder = "Selecione...",
 }: DropdownProps) {
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+
+  const selectedOption = useMemo(
+    () => options.find((item) => item.id === selectedValue),
+    [options, selectedValue]
+  );
+
+  const filteredOptions = useMemo(() => {
+    if (!search) return options;
+    return options.filter((item) =>
+      item.value.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [options, search]);
 
   const handleSelect = (value: string) => {
     onValueChange(value);
     setOpen(false);
+    setSearch(""); 
   };
 
   return (
@@ -41,8 +56,7 @@ export function Dropdown({
         activeOpacity={0.7}
       >
         <Text style={styles.buttonText}>
-          {options.filter((item) => item.id === selectedValue)[0]?.value ||
-            placeholder}
+          {selectedOption?.value || placeholder}
         </Text>
       </TouchableOpacity>
 
@@ -53,9 +67,20 @@ export function Dropdown({
           activeOpacity={1}
         >
           <View style={styles.modal}>
+            <TextInput
+              placeholder="Buscar..."
+              style={styles.searchInput}
+              value={search}
+              onChangeText={setSearch}
+            />
+
             <FlatList
-              data={options}
+              data={filteredOptions}
               keyExtractor={(item) => item.id}
+              keyboardShouldPersistTaps="handled"
+              ListEmptyComponent={
+                <Text style={styles.emptyText}>Nenhum resultado</Text>
+              }
               renderItem={({ item }) => (
                 <TouchableOpacity
                   style={styles.item}
@@ -92,7 +117,15 @@ const styles = StyleSheet.create({
   modal: {
     backgroundColor: "#fff",
     borderRadius: 8,
-    maxHeight: "50%",
+    maxHeight: "60%",
+    padding: 10,
+  },
+  searchInput: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 6,
+    padding: 10,
+    marginBottom: 10,
   },
   item: {
     padding: 15,
@@ -101,5 +134,10 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 16,
+  },
+  emptyText: {
+    textAlign: "center",
+    color: "#666",
+    marginVertical: 10,
   },
 });

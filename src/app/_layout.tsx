@@ -10,6 +10,7 @@ import {
   LeagueSpartan_900Black,
   useFonts,
 } from "@expo-google-fonts/league-spartan";
+import { useEffect, useState } from "react";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -18,5 +19,14 @@ export default function RootLayout() {
     LeagueSpartan_700Bold,
     LeagueSpartan_900Black,
   });
-  return <Providers>{fontsLoaded ? <Slot /> : <Splash />}</Providers>;
+
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      const timer = setTimeout(() => setReady(true), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [fontsLoaded]);
+  return <Providers>{ready ? <Slot /> : <Splash />}</Providers>;
 }

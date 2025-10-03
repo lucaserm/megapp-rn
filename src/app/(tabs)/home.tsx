@@ -9,7 +9,7 @@ export default function Page() {
     <View className="flex flex-1 dark bg-gray-50">
       <Header />
       <ScrollView className="flex-1">
-        <View className="px-4 md:px-6 pb-12">
+        <View className="p-4 md:px-6 pb-12">
           <UploadForm />
         </View>
       </ScrollView>

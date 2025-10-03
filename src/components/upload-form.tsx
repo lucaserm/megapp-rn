@@ -7,6 +7,7 @@ import { Text } from "@/components/ui/text";
 import { UploadProgress } from "@/components/upload-progress";
 import { clients } from "@/constants/clients";
 import { useFileUpload } from "@/hooks/use-file-upload";
+import { PlayerError } from "expo-video";
 import { useCallback } from "react";
 import { TouchableOpacity, View } from "react-native";
 
@@ -28,7 +29,7 @@ export function UploadForm() {
   );
 
   const handleMediaPickerError = useCallback(
-    (error: Error) => {
+    (error: Error | PlayerError) => {
       actions.setFiles([]);
       console.error("Media picker error:", error);
     },
