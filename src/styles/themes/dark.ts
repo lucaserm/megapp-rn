@@ -1,0 +1,33 @@
+import type { Theme } from "@/types/theme";
+
+export const darkTheme: Theme = {
+  name: "dark",
+  prettyName: "Escuro",
+  scheme: "dark",
+  colors: {
+    background: "hsl(20, 14.3%, 4.1%)",
+    foreground: "hsl(60, 9.1%, 97.8%)",
+    primary: "hsl(47.9, 95.8%, 53.1%)",
+    primaryForeground: "hsl(26, 83.3%, 14.1%)",
+    secondary: "hsl(30, 100%, 44%)",
+    secondaryForeground: "hsl(60, 9.1%, 97.8%)",
+    muted: "hsl(12, 6.5%, 15.1%)",
+    mutedForeground: "hsl(24, 5.4%, 63.9%)",
+    accent: "hsl(12, 6.5%, 17%)",
+    accentForeground: "hsl(60, 9.1%, 97.8%)",
+    destructive: "hsl(0, 62.8%, 54%)",
+    destructiveForeground: "hsl(60, 9.1%, 97.8%)",
+    success: "hsl(142, 71%, 45%)",
+    successForeground: "hsl(60, 9.1%, 97.8%)",
+    info: "hsl(188, 86%, 53%)",
+    infoForeground: "hsl(60, 9.1%, 97.8%)",
+    streak: "hsl(25, 95%, 53%)",
+    streakSecondary: "hsl(10, 95%, 53%)",
+    streakForeground: "hsl(60, 9.1%, 97.8%)",
+    streakMutedForeground: "hsl(13, 81%, 15%)",
+    warning: "hsl(27, 100%, 59%)",
+    warningForeground: "hsl(60, 9.1%, 97.8%)",
+    border: "hsl(12, 6.5%, 15.1%)",
+    input: "hsl(12, 6.5%, 15.1%)",
+  },
+};

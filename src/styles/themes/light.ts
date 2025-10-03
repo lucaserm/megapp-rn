@@ -1,0 +1,33 @@
+import type { Theme } from "@/types/theme";
+
+export const lightTheme: Theme = {
+  name: "light",
+  prettyName: "Claro",
+  scheme: "light",
+  colors: {
+    background: "hsl(0, 0%, 95%)",
+    foreground: "hsl(0, 0%, 10%)",
+    primary: "hsl(43, 95.8%, 45%)",
+    primaryForeground: "hsl(0, 0%, 10%)",
+    secondary: "hsl(30, 100%, 44%)",
+    secondaryForeground: "hsl(0, 0%, 100%)",
+    muted: "hsl(0, 0%, 85%)",
+    mutedForeground: "hsl(0, 0%, 40%)",
+    accent: "hsl(0, 0%, 90%)",
+    accentForeground: "hsl(0, 0%, 10%)",
+    destructive: "hsl(0, 62.8%, 45%)",
+    destructiveForeground: "hsl(0, 0%, 100%)",
+    success: "hsl(142, 71%, 40%)",
+    successForeground: "hsl(0, 0%, 100%)",
+    info: "hsl(210, 100%, 50%)",
+    infoForeground: "hsl(0, 0%, 100%)",
+    border: "hsl(0, 0%, 90%)",
+    input: "hsl(0, 0%, 95%)",
+    streak: "hsl(25, 95%, 53%)",
+    streakSecondary: "hsl(10, 95%, 53%)",
+    streakForeground: "hsl(60, 9.1%, 97.8%)",
+    streakMutedForeground: "hsl(13, 81%, 15%)",
+    warning: "hsl(27, 100%, 59%)",
+    warningForeground: "hsl(60, 9.1%, 97.8%)",
+  },
+};
